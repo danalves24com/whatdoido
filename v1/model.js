@@ -75,12 +75,22 @@ class Person {
     return resultVector;
   }
 
+
+  vectorToReadableList(vector) {
+    var out = vector[0];
+    for(var i = 1 ; i < vector.length - 1 ; i += 1) {
+      out += ", " + vector[i]
+    }
+    out += " and " + vector[vector.length-1]
+
+  }
+
   makeVerboseEasy(vector) {
 
     let partA = `If a subject is exposed to a situation that is ${vector[0].toLowerCase()} then`;
     let partB = vector[1] != undefined ? ` they will internally experience ${vector[1].join(" and ")}` : "";
     let partC = vector[2] != undefined ? `they will only display ${vector[2].join(" and ")}` : "" ;
-    let partD = vector[3] != undefined ? `. Their behaviour/symotoms will be the following ${vector[3].join(", ")}.` : "."
+    let partD = vector[3] != undefined ? `. Their behaviour/symotoms will be the following ${this.vectorToReadableList(vector[3])}.` : "."
     return partA + partB + partC + partD
   }
 
