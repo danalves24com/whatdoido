@@ -43,16 +43,34 @@ class Person {
     let emotions_felt = this.emotionFeltWPTStimuli(stimuli);
     let action;
     if(emotions_felt.length > 1) {
+      console.log(emotions_felt)
       action = [];
       for(var i = 0 ; i < emotions_felt.length ; i+=1) {
         let action_r = this.behaviourGivenEmotion(emotions_felt[i])
-        if(action.includes(action_r)) {}
-        else {action.push(action_r)}
+        if(Array.isArray(action_r)) {
+          for(let j = 0; j < action_r.length; j +=1 ) {
+            let action_rt = action_r[j]
+            if(action.includes(action_rt) && action_rt == undefined && action_rt == null) {}
+            else {action.push(action_rt)}
+          }
+        }
+        else {
+          if(action.includes(action_r) && action_r == undefined && action_r == null) {}
+          else {action.push(action_r)}
+        }
       }
+      console.log(action)
     }
     else {
       action = this.behaviourGivenEmotion(emotions_felt);
     }
+    var action_filtered = [];
+    for(var i = 0 ; i < action.length ; i += 1) {
+      if(action[i] != undefined) {
+        action_filtered.push(action[i]);
+      }
+    }
+    action = action_filtered
     let resultVector = [stimuli, emotions_felt, emotional_response, action];
     return resultVector;
   }
@@ -60,9 +78,9 @@ class Person {
   makeVerboseEasy(vector) {
 
     let partA = `If a subject is exposed to a situation that is ${vector[0].toLowerCase()} then`;
-    let partB = vector[1] != undefined ? ` they will internal experience ${vector[1].join(" and ")}` : "";
+    let partB = vector[1] != undefined ? ` they will internally experience ${vector[1].join(" and ")}` : "";
     let partC = vector[2] != undefined ? `they will only display ${vector[2].join(" and ")}` : "" ;
-    let partD = vector[3] != undefined ? `. Their behaviour/symotoms will be the following \b${vector[3].join(", ")}.` : "."
+    let partD = vector[3] != undefined ? `. Their behaviour/symotoms will be the following ${vector[3].join(", ")}.` : "."
     return partA + partB + partC + partD
   }
 
@@ -79,5 +97,5 @@ class Person {
 
 var props = new Properties();
 var subjectA = new Person(behavioural_tensor); // create a person object and load it with a behavioural tensor
-var test_stimuli = props.stimuli.Negative_For_The_Future; // a sample stimuli to which the subject is exposed
+var test_stimuli = props.stimuli.High_Pressure; // a sample stimuli to which the subject is exposed
 console.log(subjectA.makeVerboseEasy(subjectA.simulateFullResponseToStimuli(test_stimuli)));

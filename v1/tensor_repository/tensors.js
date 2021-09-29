@@ -14,16 +14,22 @@ let behavioural_tensor = {
     [props.emotions.Anger, props.behaviour.Rudenss],
     [props.emotions.Anger, props.behaviour.Verbal_Defense],
     [props.emotions.Anxiety, props.behaviour.Dependency],
-    [props.emotions.Anxiety, props.behaviour.Avoidance]
+    [props.emotions.Anxiety, props.behaviour.Avoidance],
+    [props.emotions.Stress, props.behaviour.Decreased_Motivation]
   ],
 
   internal_emotional_matrix: [
     [props.stimuli.Disagreement, props.emotions.Fear],
+    [props.stimuli.Disagreement, props.emotions.Insecurity],
     [props.stimuli.Agreement, props.emotions.Happiness],
     [props.stimuli.Negative_For_The_Future, props.emotions.Fear],
-    [props.stimuli.Negative_For_The_Future, props.emotions.Anxiety]
-  ]
+    [props.stimuli.Negative_For_The_Future, props.emotions.Anxiety],
+    [props.stimuli.High_Pressure, props.emotions.Stress],
+    [props.stimuli.High_Pressure, props.emotions.Fear],
+    [props.stimuli.High_Pressure, props.emotions.Anxiety],
+    [props.stimuli.Pride, props.emotions.Happiness]
 
+  ]
 };
 
 module.exports = { behavioural_tensor  }

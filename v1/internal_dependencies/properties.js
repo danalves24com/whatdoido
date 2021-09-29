@@ -7,7 +7,8 @@ class Properties {
           Physical_Defense: "Physical Defense",
           Insomnia: "Insomnia",
           Dependency: "Dependency",
-          Avoidance: "Avoidance"
+          Avoidance: "Avoidance",
+          Decreased_Motivation: "Decreased Motivation"
 
     }
     this.emotions = { // feelings
@@ -35,15 +36,15 @@ class Properties {
       Stress: "Stress",
       Insecurity: "Insecurity"
     }
-    this.stimuli = { // situations
+    this.stimuli = { // situations (adjectives)
       Positive: "Positive",
       Negative: "Negative",
       Tragic: "Tragic",
       Neutral: "Neutral",
-      Agreement: "Agreement",
-      Disagreement: "Disagreement",
-      Pride: "Pride",
-      Great_Pressure: "Great Pressure",
+      Agreement: "Agreement imposing",
+      Disagreement: "Disagreement imposing",
+      Pride: "Pride imposing",
+      High_Pressure: "High Pressure",
       Possitive_For_The_Future: "Possitive For The Future",
       Negative_For_The_Future: "Negative For The Future"
     }
