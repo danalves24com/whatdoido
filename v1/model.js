@@ -77,20 +77,25 @@ class Person {
 
 
   vectorToReadableList(vector) {
-    var out = vector[0];
-    for(var i = 1 ; i < vector.length - 1 ; i += 1) {
-      out += ", " + vector[i]
+    if(array.isarray(vector)) {
+      var out = vector[0];
+      for(var i = 1 ; i < vector.length - 1 ; i += 1) {
+        out += ", " + vector[i]
+      }
+      out += " and " + vector[vector.length-1]
+      return out;
     }
-    out += " and " + vector[vector.length-1]
-
+    else {
+      return vector
+    }
   }
 
   makeVerboseEasy(vector) {
 
     let partA = `If a subject is exposed to a situation that is ${vector[0].toLowerCase()} then`;
-    let partB = vector[1] != undefined ? ` they will internally experience ${vector[1].join(" and ")}` : "";
-    let partC = vector[2] != undefined ? `they will only display ${vector[2].join(" and ")}` : "" ;
-    let partD = vector[3] != undefined ? `. Their behaviour/symotoms will be the following ${this.vectorToReadableList(vector[3])}.` : "."
+    let partB = vector[1] != undefined ? ` they will internally experience ${this.vectorToReadableList(vector[1])}` : "";
+    let partC = vector[2] != undefined ? `. They will only display ${this.vectorToReadableList(vector[2])}` : "" ;
+    let partD = vector[3] != undefined ? `. Their behaviour/symotoms will be ${this.vectorToReadableList(vector[3])}.` : "."
     return partA + partB + partC + partD
   }
 
@@ -107,5 +112,5 @@ class Person {
 
 var props = new Properties();
 var subjectA = new Person(behavioural_tensor); // create a person object and load it with a behavioural tensor
-var test_stimuli = props.stimuli.High_Pressure; // a sample stimuli to which the subject is exposed
+var test_stimuli = props.stimuli.Negative_For_The_Future; // a sample stimuli to which the subject is exposed
 console.log(subjectA.makeVerboseEasy(subjectA.simulateFullResponseToStimuli(test_stimuli)));

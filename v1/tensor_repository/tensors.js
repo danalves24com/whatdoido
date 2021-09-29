@@ -7,7 +7,8 @@ let behavioural_tensor = {
 
   external_emotional_matrix: [ // emotion that the subject displays
     [props.stimuli.Disagreement, props.emotions.Anger],
-    [props.stimuli.Agreement, props.emotions.Happiness]
+    [props.stimuli.Agreement, props.emotions.Happiness],
+    [props.stimuli.Negative_For_The_Future, props.emotions.Frustration]
   ],
 
   emotional_manifestations_matrix: [
